@@ -82,12 +82,12 @@ const BiometricLock = ({ onAuth }: { onAuth: () => void }) => {
       <motion.div 
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="text-cyan-400 mb-8 tracking-widest text-2xl font-bold uppercase"
+        className="text-cyan-400 mb-8 tracking-widest text-lg md:text-2xl font-bold uppercase text-center px-4"
       >
         U.S. Homeland Infrastructure Defense
       </motion.div>
       
-      <div id="video-container" className="relative w-64 h-64 border-2 border-cyan-500 rounded-full overflow-hidden shadow-[0_0_30px_rgba(6,182,212,0.5)]">
+      <div id="video-container" className="relative w-48 h-48 md:w-64 md:h-64 border-2 border-cyan-500 rounded-full overflow-hidden shadow-[0_0_30px_rgba(6,182,212,0.5)]">
         <video 
           ref={videoRef} 
           autoPlay 
@@ -324,44 +324,41 @@ export default function App() {
   }
 
   return (
-    <div id="dashboard" className="h-screen w-screen bg-[#020609] text-cyan-400 font-mono p-4 flex flex-col gap-4 overflow-hidden select-none">
-      <header className="flex justify-between items-center border-b border-cyan-500/50 pb-2 bg-gradient-to-r from-cyan-950/20 to-transparent">
+    <div id="dashboard" className="h-screen w-screen bg-[#020609] text-cyan-400 font-mono p-2 md:p-4 flex flex-col gap-2 md:gap-4 overflow-hidden select-none">
+      <header className="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-cyan-500/50 pb-2 bg-gradient-to-r from-cyan-950/20 to-transparent gap-2 shrink-0">
         <div className="flex items-center gap-3">
-          <Shield className="w-6 h-6" />
-          <h1 className="text-xl font-bold tracking-tighter uppercase">Melisa Mission Control // SOAR Platform</h1>
+          <Shield className="w-5 h-5 md:w-6 md:h-6" />
+          <h1 className="text-sm md:text-xl font-bold tracking-tighter uppercase truncate">Melisa Mission Control // SOAR</h1>
         </div>
-        <div className="flex items-center gap-4 text-xs">
+        <div className="flex flex-wrap items-center gap-2 md:gap-4 text-[10px] md:text-xs">
           <div className="flex items-center gap-2 text-green-500">
             <motion.div 
               animate={{ opacity: [0.4, 1, 0.4] }}
               transition={{ duration: 1.5, repeat: Infinity }}
-              className="w-2.5 h-2.5 bg-green-500 rounded-full shadow-[0_0_8px_#22c55e]"
+              className="w-2 h-2 md:w-2.5 md:h-2.5 bg-green-500 rounded-full shadow-[0_0_8px_#22c55e]"
             />
-            VOICE LINK: ACTIVE
+            LINK: ACTIVE
           </div>
           <div className="text-cyan-500/50">SEC-LEVEL: OMEGA</div>
-          <div className="text-cyan-500/50">EN-US // {new Date().toLocaleTimeString()}</div>
+          <div className="text-cyan-500/50 uppercase">{new Date().toLocaleTimeString()}</div>
         </div>
       </header>
 
-      <div className="flex-1 grid grid-cols-[280px_1fr_350px] gap-4 overflow-hidden">
+      <div className="flex-1 grid grid-cols-1 lg:grid-cols-[280px_1fr_350px] gap-2 md:gap-4 overflow-y-auto lg:overflow-hidden pb-48 lg:pb-0 custom-scrollbar">
         {/* Sidebar: Status & Local Biometrics */}
-        <aside className="flex flex-col gap-4 overflow-hidden">
-          <section className="panel flex flex-col items-center bg-[#050c14]/90 border border-cyan-500/30 p-4 relative h-64 shrink-0">
+        <aside className="flex flex-col gap-2 md:gap-4 h-fit lg:h-full">
+          <section className="panel flex flex-col items-center bg-[#050c14]/90 border border-cyan-500/30 p-4 relative h-48 md:h-64 shrink-0">
             <div className="absolute top-0 left-0 bg-cyan-700/50 text-[10px] px-2 py-0.5 border-b border-r border-cyan-500 font-bold uppercase">Biometric Monitor</div>
-            <div className="w-32 h-32 border-2 border-cyan-500 rounded-full overflow-hidden mt-6 flex items-center justify-center bg-black/40">
-              <UserCheck className="w-16 h-16 opacity-40 animate-pulse" />
+            <div className="w-24 h-24 md:w-32 md:h-32 border-2 border-cyan-500 rounded-full overflow-hidden mt-6 flex items-center justify-center bg-black/40">
+              <UserCheck className="w-12 h-12 md:w-16 md:h-16 opacity-40 animate-pulse" />
             </div>
-            <div className="mt-4 text-center">
-              <div className="text-green-500 text-xs font-bold uppercase tracking-widest">Root Admin Verified</div>
-              <div className="text-[10px] text-cyan-500/50 mt-1 uppercase tracking-tighter">Frank // Homeland Clearance</div>
-              <div className="text-[10px] text-cyan-500 mt-4 flex items-center gap-1 justify-center">
-                <Activity className="w-3 h-3" /> Liveness: 99.8%
-              </div>
+            <div className="mt-2 md:mt-4 text-center">
+              <div className="text-green-500 text-[10px] md:text-xs font-bold uppercase tracking-widest">Root Admin Verified</div>
+              <div className="text-[9px] text-cyan-500/50 mt-1 uppercase tracking-tighter">Homeland Clearance</div>
             </div>
           </section>
 
-          <section className="panel flex-1 bg-[#050c14]/90 border border-cyan-500/30 p-4 relative overflow-y-auto">
+          <section className="panel flex-1 bg-[#050c14]/90 border border-cyan-500/30 p-4 relative min-h-[200px] lg:flex-1 lg:overflow-y-auto">
             <div className="absolute top-0 left-0 bg-cyan-700/50 text-[10px] px-2 py-0.5 border-b border-r border-cyan-500 font-bold uppercase">System Health</div>
             <div className="mt-4 space-y-4">
               <div className="space-y-1">
@@ -382,39 +379,33 @@ export default function App() {
                   <motion.div animate={{ width: ['10%', '60%', '30%'] }} transition={{ duration: 2, repeat: Infinity }} className="h-full bg-cyan-400" />
                 </div>
               </div>
-              <div className="pt-2 border-t border-cyan-500/20 text-[10px] text-cyan-500/50">
-                <div className="flex justify-between mb-1"><span>UPTIME</span><span>04:12:33</span></div>
-                <div className="flex justify-between"><span>NODES</span><span>142 GLOBAL</span></div>
-              </div>
             </div>
           </section>
         </aside>
 
-        {/* Main Content: Threat Map */}
-        <main className="panel bg-[#050c14]/90 border border-cyan-500/30 relative flex flex-col min-h-0">
-          <div className="absolute top-0 left-0 bg-cyan-700/50 text-[10px] px-2 py-0.5 border-b border-r border-cyan-500 font-bold uppercase z-10">Global Threat Operations</div>
+        {/* Main Content: Threat Map - On mobile it stays on top for visibility */}
+        <main className="panel h-80 lg:h-full bg-[#050c14]/90 border border-cyan-500/30 relative flex flex-col min-h-0 order-first lg:order-none shrink-0 lg:shrink">
+          <div className="absolute top-0 left-0 bg-cyan-700/50 text-[10px] px-2 py-0.5 border-b border-r border-cyan-500 font-bold uppercase z-10">Threat Ops</div>
           <div className="flex-1 overflow-hidden relative">
             <iframe 
               src="https://threatmap.fortiguard.com" 
-              className="w-full h-full border-none pointer-events-auto grayscale opacity-80 contrast-125"
+              className="w-full h-full border-none pointer-events-auto grayscale opacity-80 contrast-125 scale-[1.5] lg:scale-100 origin-center"
               title="FortiGuard Threat Map"
             />
-            {/* Overlay grid lines for tech effect */}
-            <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle,transparent_20%,#020609_100%)] opacity-30" />
           </div>
         </main>
 
         {/* Intelligence Feed */}
-        <aside className="panel bg-[#050c14]/90 border border-cyan-500/30 p-4 relative flex flex-col gap-4 overflow-hidden">
-          <div className="absolute top-0 left-0 bg-cyan-700/50 text-[10px] px-2 py-0.5 border-b border-r border-cyan-500 font-bold uppercase z-10">Intelligence Attribution</div>
+        <aside className="panel h-fit min-h-[300px] lg:h-full bg-[#050c14]/90 border border-cyan-500/30 p-4 relative flex flex-col gap-4 overflow-hidden shrink-0 lg:shrink">
+          <div className="absolute top-0 left-0 bg-cyan-700/50 text-[10px] px-2 py-0.5 border-b border-r border-cyan-500 font-bold uppercase z-10">Attribution</div>
           
           <div className="mt-6 flex-1 overflow-y-auto space-y-4 pr-2 custom-scrollbar">
             <div className="p-3 border border-red-500/30 bg-red-500/5 rounded">
               <h4 className="text-[10px] font-bold text-red-500 mb-1 flex items-center gap-1 uppercase">
-                <AlertTriangle className="w-3 h-3" /> CISA Critical Alert
+                <AlertTriangle className="w-3 h-3" /> CISA Warning
               </h4>
-              <p className="text-[10px] text-red-200 uppercase leading-tight italic">
-                CVE-2026-5281: Google Chrome Zero-Day targeting U.S. Federal infrastructure. Immediate remediation is mandatory.
+              <p className="text-[9px] text-red-200 uppercase leading-tight italic">
+                CVE-2026-5281: Zero-Day targeting U.S. Federal infrastructure.
               </p>
             </div>
 
@@ -431,8 +422,6 @@ export default function App() {
                     <span className="text-green-500 font-bold tracking-tighter">● {threat.status}</span>
                   </div>
                   <div className="grid grid-cols-2 gap-y-1 text-cyan-100/70">
-                    <span className="uppercase">Origin:</span> <span className="text-right text-cyan-300 truncate">{threat.origin}</span>
-                    <span className="uppercase">Target:</span> <span className="text-right text-cyan-300 truncate">{threat.target}</span>
                     <span className="uppercase">Proxy IP:</span> <span className="text-right text-red-400 font-bold">{threat.ip}</span>
                   </div>
                   <div className="pt-1 border-t border-yellow-500/10 text-cyan-200/50 italic leading-tight">
@@ -441,33 +430,23 @@ export default function App() {
                 </motion.div>
               ))}
             </AnimatePresence>
-
-            {threats.length === 0 && (
-              <div className="h-full flex flex-col items-center justify-center opacity-20 text-center">
-                <Search className="w-12 h-12 mb-4" />
-                <p className="text-[10px] uppercase tracking-widest">Awaiting threat analysis command...</p>
-              </div>
-            )}
           </div>
         </aside>
       </div>
 
-      {/* Terminal Footer */}
-      <footer className="panel bg-[#050c14]/90 border border-cyan-500/30 relative h-[220px] flex overflow-hidden shrink-0">
-        <div className="absolute top-0 left-0 bg-cyan-700/50 text-[10px] px-2 py-0.5 border-b border-r border-cyan-500 font-bold uppercase z-10">L3 Interface Terminal</div>
-        <div className="flex-1 p-4 overflow-y-auto font-mono text-xs flex flex-col gap-2 custom-scrollbar">
+      {/* Terminal Footer - Fixed bottom on mobile, side-by-side on desktop */}
+      <footer className="fixed bottom-0 left-0 w-full lg:relative lg:bottom-auto panel bg-[#020609] border-t lg:border-t-0 border-cyan-500/30 h-[180px] md:h-[220px] flex flex-col lg:flex-row overflow-hidden shrink-0 z-40">
+        <div className="absolute top-0 left-0 bg-cyan-700/50 text-[10px] px-2 py-0.5 border-b border-r border-cyan-500 font-bold uppercase z-10">Terminal</div>
+        <div className="flex-1 p-3 md:p-4 overflow-y-auto font-mono text-[10px] md:text-xs flex flex-col gap-2 custom-scrollbar">
           {logs.map((log) => (
-            <div key={log.id} className="flex gap-4 items-start border-b border-cyan-900/10 pb-1 last:border-0">
-              <span className="text-cyan-500/30 shrink-0 font-bold text-[10px] mt-0.5">[{log.timestamp}]</span>
-              <div className={`flex-1 break-words leading-relaxed ${
+            <div key={log.id} className="flex gap-2 items-start border-b border-cyan-900/10 pb-1 last:border-0">
+              <span className="text-cyan-500/30 shrink-0 font-bold text-[9px] mt-0.5">[{log.timestamp}]</span>
+              <div className={`flex-1 break-words leading-tight ${
                 log.type === 'ai' ? 'text-cyan-400' : 
                 log.type === 'user' ? 'text-white italic' : 
                 log.type === 'action' ? 'text-green-500 font-bold underline' : 
                 'text-cyan-500/40'
               }`}>
-                <span className="opacity-50 mr-2 uppercase text-[9px]">
-                  {log.type === 'ai' ? 'Melisa >' : log.type === 'user' ? 'Admin >' : 'System >'}
-                </span>
                 {log.text}
               </div>
             </div>
@@ -475,79 +454,48 @@ export default function App() {
           <div ref={terminalEndRef} />
         </div>
 
-        {/* SOAR Playbook Visualization */}
+        {/* SOAR Playbook Visualization Overlay for Mobile Accessibility */}
         <AnimatePresence>
           {activePlaybookSteps.length > 0 && (
             <motion.div 
-              initial={{ x: 100, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: 100, opacity: 0 }}
-              className="w-[300px] border-l border-cyan-500/30 bg-cyan-950/20 p-4 flex flex-col gap-3 relative overflow-hidden"
+              initial={{ y: 200, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: 200, opacity: 0 }}
+              className="absolute inset-0 bg-[#020609]/98 z-50 p-4 border-t border-cyan-500"
             >
-              <div className="absolute top-0 left-0 bg-yellow-600/50 text-[9px] px-2 py-0.5 border-b border-r border-yellow-500 font-bold uppercase z-10 flex items-center gap-1">
-                <Activity className="w-2.5 h-2.5" /> Playbook Alpha Running
+              <div className="text-[10px] text-yellow-500 font-bold uppercase mb-3 flex items-center gap-1">
+                <Activity className="w-2.5 h-2.5" /> Playbook Active
               </div>
-              <div className="mt-4 space-y-3">
+              <div className="grid grid-cols-2 md:grid-cols-1 gap-2">
                 {activePlaybookSteps.map((step) => (
-                  <div key={step.id} className="flex items-center gap-3">
+                  <div key={step.id} className="flex items-center gap-2">
                     <div className="shrink-0">
-                      {step.status === 'success' ? (
-                        <UserCheck className="w-4 h-4 text-green-500" />
-                      ) : step.status === 'active' ? (
-                        <div className="w-4 h-4 border-2 border-cyan-500 border-t-transparent rounded-full animate-spin" />
-                      ) : (
-                        <Lock className="w-4 h-4 text-cyan-900" />
-                      )}
+                      {step.status === 'success' ? <UserCheck className="w-3 h-3 text-green-500" /> : <Lock className="w-3 h-3 text-cyan-900" />}
                     </div>
-                    <div className={`text-[10px] uppercase font-bold tracking-tight ${
-                      step.status === 'success' ? 'text-green-500' : 
-                      step.status === 'active' ? 'text-cyan-400' : 'text-cyan-900'
-                    }`}>
-                      {step.label}
-                    </div>
+                    <div className="text-[8px] uppercase font-bold text-cyan-400 truncate">{step.label}</div>
                   </div>
                 ))}
               </div>
-              <motion.div 
-                animate={{ opacity: [0.3, 0.6, 0.3] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="mt-auto h-1 bg-cyan-900 overflow-hidden rounded-full"
-              >
-                <div 
-                  className="h-full bg-cyan-400 transition-all duration-500" 
-                  style={{ width: `${(activePlaybookSteps.filter(s => s.status === 'success').length / activePlaybookSteps.length) * 100}%` }}
-                />
-              </motion.div>
             </motion.div>
           )}
         </AnimatePresence>
 
-        <div className="w-[350px] border-l border-cyan-500/30 p-4 flex flex-col gap-4 bg-black/20">
-          <div className="flex items-center gap-3">
-            <div className={`p-2 rounded-full border ${isListening ? 'border-red-500/50 bg-red-500/10' : 'border-cyan-500/50 bg-cyan-500/10'}`}>
-              {isListening ? <Mic className="w-5 h-5 text-red-500 animate-pulse" /> : <MicOff className="w-5 h-5 text-cyan-500 opacity-50" />}
+        <div className="h-10 lg:h-full lg:w-[350px] border-t lg:border-t-0 lg:border-l border-cyan-500/30 p-2 lg:p-4 flex flex-row lg:flex-col gap-4 bg-black/40 items-center justify-between shrink-0">
+          <div className="flex items-center gap-2">
+            <div className={`p-1.5 rounded-full border ${isListening ? 'border-red-500/50 bg-red-500/10' : 'border-cyan-500/50 bg-cyan-500/10'}`}>
+              <Mic className={`w-3.5 h-3.5 ${isListening ? 'text-red-500 animate-pulse' : 'text-cyan-500 opacity-50'}`} />
             </div>
-            <div className="text-[10px] uppercase font-bold text-cyan-400">
-              Voice Interface Link
-              <div className="text-[9px] font-normal opacity-50 lowercase tracking-normal">Listening for: "status", "analyze threat", "contain"</div>
-            </div>
+            <div className="text-[9px] uppercase font-bold text-cyan-400 hidden sm:block">Voice Link</div>
           </div>
-          <div className="grow border border-cyan-500/20 bg-black/40 rounded p-4 relative overflow-hidden flex items-center justify-center">
-            {isListening ? (
-              <div className="flex items-center gap-1">
-                {[...Array(12)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    animate={{ height: [10, 30, 10] }}
-                    transition={{ duration: 1, repeat: Infinity, delay: i * 0.1 }}
-                    className="w-1 bg-cyan-400"
-                  />
+          <div className="flex-1 h-3 lg:h-auto lg:w-full border border-cyan-500/20 bg-black/40 rounded px-2 lg:p-4 flex items-center justify-center min-w-[100px]">
+             {isListening ? (
+              <div className="flex items-center gap-0.5">
+                {[...Array(6)].map((_, i) => (
+                  <motion.div key={i} animate={{ height: [4, 12, 4] }} transition={{ duration: 1, repeat: Infinity, delay: i * 0.1 }} className="w-1 bg-cyan-400" />
                 ))}
               </div>
             ) : (
-              <div className="text-[10px] uppercase opacity-30 text-center tracking-widest leading-normal">
-                Biometric Identity Confirmed<br/>Voice Recognition Link Offline
-              </div>
+              <div className="text-[8px] uppercase opacity-30 text-center tracking-tighter">VOICE READY</div>
             )}
           </div>
         </div>
