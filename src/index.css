@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-cyan: #00d8ff;
+  --color-brand-red: #ff2a2a;
+  --color-brand-bg: #020609;
+}
+
+@layer base {
+  body {
+    @apply bg-brand-bg text-brand-cyan antialiased overflow-hidden;
+  }
+}
+
+@layer components {
+  .panel {
+    @apply relative overflow-hidden z-0;
+  }
+
+  .panel::after {
+    content: '';
+    @apply absolute inset-0 pointer-events-none border border-brand-cyan/10 z-10;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    @apply w-1;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-brand-cyan/5;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-brand-cyan/20 rounded-full;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-brand-cyan/40;
+  }
+}
+
+/* Animations for the biometric scan or technical details */
+@keyframes grid-animation {
+  from { background-position: 0 0; }
+  to { background-position: 30px 30px; }
+}

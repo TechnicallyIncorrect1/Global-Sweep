@@ -1,0 +1,9 @@
+{
+  "name": "MELISA Mission Control v6.0",
+  "description": "Advanced Cyber Defensive & SOAR Platform for Global Threat Intelligence and Infrastructure Safeguarding.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ],
+  "majorCapabilities": []
+}
