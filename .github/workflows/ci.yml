@@ -11,4 +11,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: echo "✅ Repository is clean - Global-Sweep"
+      - name: Repository Status
+        run: echo "✅ Global-Sweep - Repository cleaned successfully"
