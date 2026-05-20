@@ -1,4 +1,4 @@
-﻿name: CI Pipeline
+﻿name: CI
 
 on:
   push:
@@ -7,13 +7,8 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  status:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
-      - name: Repository Status
-        run: echo "✅ Repository cleaned successfully - Global-Sweep"
-      
-      - name: Setup Environment
-        run: echo "Environment ready"
+      - run: echo "✅ Repository is clean - Global-Sweep"
